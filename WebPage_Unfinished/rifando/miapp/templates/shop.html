@@ -1,0 +1,219 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Compra garnachas - El Garnochero De La Felicidad </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css'%}"/>
+
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{%static 'css/jquery-ui.css'%}">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css'%}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+    <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 mb-3 mb-md-0 col-md-6 order-1 order-md-2 text-center">
+              <div class="site-logo">
+                <a href="{%url 'index'%}" class="js-logo-clone">El Garnochero De La Felicidad</a>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  <li><a href="{%url 'login'%}"><span class="icon icon-smile-o"></span></a></li>
+                  <li><a href="{%url 'cart'%}" class="site-cart"><span class="icon icon-shopping_cart"></span></a></li> 
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                </ul>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div> 
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <li><a href="{% url 'index'%}">Inicio</a></li>
+            <li><a href="{%url 'shop'%}">Compra</a></li>
+            <li><a href="{%url 'providers'%}">Proveedores</a></li>
+            <li><a href="{%url 'about'%}">Acerca</a></li>
+            <li><a href="{%url 'contact'%}">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="{% url 'index'%}">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Compra</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12 order-2">
+
+            <div class="row">
+              <div class="col-md-12 mb-5">
+                <div class="float-md-left mb-4"><h2 class="text-black h5">¡A <i>garnachear</i>, amigos!{{user.name}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+            {% for product in products %}
+              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                  <figure class="block-4-image">
+                    <a><img src="{{product.image.url}}"  alt="Image placeholder" class="img-fluid"></a>
+                  </figure>
+                </div>
+                  <div class="block-4-text p-4">
+                    <h3><a>{{product.name}}</a></h3>
+                    <p class="mb-0">{{product.description}}</p>
+                    <p class="text-primary font-weight-bold">El precio es: ${{product.price}}</p>
+                    <input type="text" class="form-control text-center" value="0" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <button type="submit" class="btn btn-secondary btn-sm">Agregar</i></button>
+                  </div>
+              </div>
+            {% endfor %}
+            </div>
+            <div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="site-section site-blocks-2">
+              <div class="row justify-content-center text-center mb-5">
+                <div class="col-md-7 site-section-heading text-center pt-4"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="200">
+                  <a class="block-2-item" href="#">
+                    <figure class="image">
+                      <img src="{%static 'images/pineapple.jpg'%}" alt="" class="img-fluid">
+                    </figure>
+                  </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="200">
+                  <a class="block-2-item" href="#">
+                    <figure class="image">
+                      <img src="{%static 'images/apples.jpg'%}" alt="" class="img-fluid">
+                    </figure>
+                  </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+                  <a class="block-2-item" href="#">
+                    <figure class="image">
+                      <img src="{%static 'images/cupcake.jpg'%}" alt="" class="img-fluid">
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <footer class="site-footer border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Te puede interesar</h3>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                  <li><a href="{%url 'contact'%}">Vende con nosotros</a></li>
+                  <li><a href="{%url 'shop'%}">Compra tu comida favorita</a></li>
+                  <li><a href="{%url 'providers'%}">Conoce a nuestros asombroros proveedores</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="{%url 'about'%}">¿Quiénes somos?</a></li>
+                  <li><a href="{%url 'about'%}">El <i>Dream Team</i></a></li>
+                  <li><a href="{%url 'about'%}">Nuestros objetivos</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li>
+                    <span class="icon-instagram"></span>
+                    <a href="#"> Instagram</a>
+                  </li>
+                  <li>
+                    <span class="icon-facebook"></span>
+                    <a href="#"> Facebook</a>
+                  </li>
+                  <li>
+                    <span class="icon-twitter"></span>
+                    <a href="#"> Twitter</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">¿Dónde encontrarnos?</h3>
+              <ul class="list-unstyled">
+                <li class="address">Direccion para gente exitosa</li>
+                <li class="phone"><a href="tel://#">555-exito</a></li>
+                <li class="email">unDiezEnISW@parfavar.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+  <script>
+    AOS.init();
+  </script>
+
+    
+  </body>
+</html>

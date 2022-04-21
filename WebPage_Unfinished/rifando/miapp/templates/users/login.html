@@ -1,0 +1,225 @@
+{% load static  %}
+<!-- Mensaje de confirmación de registro-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>¡Entra a la diversi&oacute;n! - El Garnachero De La Felicidad</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css'%}"/>
+
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{%static 'css/jquery-ui.css'%}">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css'%}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/modalLook.css'%}">
+  </head>
+
+  <body>
+  <div class="site-wrap">
+    <!-- Header -->
+    <header class="site-navbar" role="banner">
+      <!-- Header superior -->
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-12 mb-3 mb-md-0 col-md-6 order-1 order-md-2 text-center">
+              <div class="site-logo">
+                <a href="index.html" class="js-logo-clone" data-aos="fade-left">El Garnachero De La Felicidad</a>
+              </div>
+            </div>
+            <!-- Íconos del header superior -->
+            <div class="col-6 col-md-6 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  <li class="d-inline-block d-md-none ml-md-0">
+                    <a href="#" class="site-menu-toggle js-menu-toggle">
+                      <span class="icon-menu"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="login.html">
+                      <span class="icon icon-smile-o" id = "loginFace"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="cart.html" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                    </a>
+                  </li> 
+                </ul>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div> 
+      <!-- Header inferior / barra de navegación -->
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <li><a href="{% url 'index'%}">Inicio</a></li>
+            <li><a href="{%url 'shop'%}">Compra</a></li>
+            <li><a href="{%url 'providers'%}">Proveedores</a></li>
+            <li><a href="{%url 'about'%}">Acerca</a></li>
+            <li><a href="{%url 'contact'%}">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Fin Header / Inicio del contenido de la página -->
+    <!-- Barra de posicionamiento -->
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Inicia Sesi&oacute;n</strong></div>
+        </div>
+      </div>
+    </div>  
+    <!-- Cuadro para iniciar sesión -->
+    <div class="site-section" data-aos="fade">
+        <div class="container">
+          <div class="row">
+            <!-- Título -->
+            <div class="col-md-12">
+              <h2 class="h3 mb-3 text-black">Ya sabes qu&eacute; hacer, <i>cari&ntilde;o</i></h2>
+            </div>
+            <div class="col-md-5 ml-auto">
+                <a href="#"><img src="{%static 'images/r4.jpg'%}" alt="Image placeholder" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-md-7">
+                <!-- Formulario para registro de cliente -->
+                <form method = "POST" actio ="">
+                {% csrf_token %}
+                    <div class="p-3 p-lg-5 border">
+                        <div class="form-group row text-left">
+                            <div class="col-md-12">
+                                {{login_page.email.label}}
+                                {{login_page.email}}
+                            </div>
+                        </div>
+                        <div class="form-group row text-left">
+                            <div class="col-md-12">
+                                {{login_page.password.label}}
+                                {{login_page.password}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <label for="tipo" class="text-black">Registrate como: </label>
+                              <select name = "tipo">
+                                <option value="0">Vendedor</option>
+                                  <option value="1">Comprador</option>
+                              </select>
+                            </label>
+                          </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                               <button type="submit" class="btn btn-secondary btn-sm">Dale <i>pa' lante</i></button>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Enlace para registrarse -->
+                        <div class="form-group row text-center">
+                            <div class="col-md-12">
+                                <p class="text-black">¿No eres parte del club <i>coral</i>?</p>
+                                <a href="signup.html" id = "register">P&iacute;cale aqu&iacute;</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Footer / Fin del contenido de la página-->
+    <footer class="site-footer border-top">
+      <div class="container">
+        <div class="row">
+          <!-- Primera columna -->
+          <div class="col-lg-9 mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Te puede interesar</h3>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="{%url 'contact'%}">Vende con nosotros</a></li>
+                  <li><a href="{%url 'shop'%}">Compra tu comida favorita</a></li>
+                  <li><a href="{%url 'providers'%}">Conoce a nuestros asombroros proveedores</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="{%url 'about'%}">¿Quiénes somos?</a></li>
+                  <li><a href="{%url 'about'%}">El <i>Dream Team</i></a></li>
+                  <li><a href="{%url 'about'%}">Nuestros objetivos</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li>
+                    <span class="icon-instagram"></span>
+                    <a href="#"> Instagram</a>
+                  </li>
+                  <li>
+                    <span class="icon-facebook"></span>
+                    <a href="#"> Facebook</a>
+                  </li>
+                  <li>
+                    <span class="icon-twitter"></span>
+                    <a href="#"> Twitter</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Segunda columna -->
+          <div class="col-md-9 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">¿D&oacute;nde encontrarnos?</h3>
+              <ul class="list-unstyled">
+                <li class="address">Direccion para gente exitosa</li>
+                <li class="phone"><a href="tel://#">555-exito</a></li>
+                <li class="email">unDiezEnISW@parfavar.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+              <script>
+                document.write(new Date().getFullYear());
+              </script> 
+              All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> 
+              by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Fin del footer -->
+  </div>
+
+  <!-- Javascript -->
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+  <script>
+    AOS.init();
+  </script>
+
+    
+  </body>
+</html>
