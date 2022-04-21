@@ -1,5 +1,5 @@
 // GPS Library for CCS PIC C compiler
-// http://simple-circuit.com/
+
 
 
 
