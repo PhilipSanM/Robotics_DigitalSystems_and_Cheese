@@ -15,4 +15,9 @@ void loop() {
                   // The argument will be the message
 
   Serial.println("Hello from an Arduino"); // Prints--> "Hello from an Arduino"
+  //Now let's add a delay in order to see the simulation more slowly
+  // a pause of 1 sec ----  delay(1000);
+  // a pause of 1/2 sec ----  delay(500);
+  // a pause of 9 sec ----  delay(9000);
+  delay(4000);
 }
