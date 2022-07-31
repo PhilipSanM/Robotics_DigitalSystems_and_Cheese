@@ -24,7 +24,16 @@
 
 ---
 
-## Main Contributors🧑‍💻👨‍💻👩‍💻:
+## 🎒Main Courses🏫:
+- <a href="https://github.com/PhilipSanM/Robotics_DigitalSystems_and_Cheese/tree/main/Analogue_Digital_Electronics">Analogue and Digital Electronics</a>
+- <a href="https://github.com/PhilipSanM/Robotics_DigitalSystems_and_Cheese/tree/main/Arduino_Path">Learning Arduino</a>
+- <a href="https://github.com/PhilipSanM/Robotics_DigitalSystems_and_Cheese/tree/main/Assembler_Path">Learning Assembler</a>
+
+
+
+---
+
+## 👩‍💻👨‍💻🧑‍💻Main Contributors🧑‍💻👨‍💻👩‍💻:
 - <a href="https://github.com/PhilipSanM">PhilipSanM</a>
 
 ---
