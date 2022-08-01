@@ -19,6 +19,8 @@
 
 ## 🤖Main Projects 🤖:
 - <a href="https://github.com/PhilipSanM/Robotics_DigitalSystems_and_Cheese/tree/main/Kanan">Kanan</a>
+- <a href="https://github.com/PhilipSanM/Robotics_DigitalSystems_and_Cheese/tree/main/ACD">Automatic Capsule Dispenser</a>
+
 
 
 
