@@ -9,13 +9,34 @@
 
 ---
 
-## km
+## D O C U M E N T S:
 
-<div align = "left" id = "Schematics">
+<div align = "left" id = "Documents">
   <h3><strong>
-    HORN CONTROL:
-  </h3></strong>
+   - <a href="ACD.pdf">Full Documentation in HD 4K 😎</a>
+  </h3></strong> 
+  <h3><strong>
+   - <a href="Code/ACD_5.asm">-->CODE<--</a>
+  </h3></strong> 
+</div>
 
+---
+
+## T O O L S:
+
+<div align = "left" id = "Documents">
+  <h3><strong>
+   - <a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide">ASSEMBLER MPLAB IDE</a>
+  </h3></strong> 
+  <img src="Media/Proteus.png" width="200"/>
+  <h3><strong>
+   - <a href="https://www.labcenter.com/">Proteus Design Suite</a>
+  </h3></strong> 
+  <img src="Media/Mplab.jpg" width="200"/>
+  <h3><strong>
+   - <a href="https://pic-c-compiler1.software.informer.com/versions/">Pic C Compiler</a>
+  </h3></strong> 
+  <img src="Media/pic.png" width="200"/>
 </div>
 
 ---
@@ -24,29 +45,29 @@
 
 <div align = "left" id = "Schematics">
   <h3><strong>
-    HORN CONTROL:
+    - HORN CONTROL:
   </h3></strong>
-  <img src="Media/Horn.png" width="1000"/>
+  <img src="Media/Horn.png" width="500"/>
   <h3><strong>
-    TEMPERATURE CONTROL:
+    - TEMPERATURE CONTROL:
   </h3></strong>
-  <img src="Media/Temperature.png" width="1000"/>
+  <img src="Media/Temperature.png" width="500"/>
   <h3><strong>
-    REAL TIME CLOCK:
+    - REAL TIME CLOCK:
   </h3></strong>
-  <img src="Media/Clock.png" width="1000"/>
+  <img src="Media/Clock.png" width="500"/>
   <h3><strong>
-    SCHEDULE CONTROL:
+    - SCHEDULE CONTROL:
   </h3></strong>
-  <img src="Media/Schedule.png" width="1000"/>
+  <img src="Media/Schedule.png" width="500"/>
   <h3><strong>
-    LOCATION:
+    - LOCATION:
   </h3></strong>
-  <img src="Media/Location.png" width="1000"/>
+  <img src="Media/Location.png" width="500"/>
   <h3><strong>
-    AUTOMATIC CAPSULE DISPENSER:
+    - AUTOMATIC CAPSULE DISPENSER:
   </h3></strong>
-  <img src="Media/ACD.png" width="1500"/>
+  <img src="Media/ACD.png" width="1000"/>
 
 </div>
 
@@ -58,3 +79,12 @@
 - **[CECyT 9 -ACD](https://www.youtube.com/watch?v=u54tylWNG8o)**
 - **[CECyT 9 EXPOBATIZ](https://www.youtube.com/watch?v=XzQXxdGQ930)**
 - **[ACD Place #1🏆](https://youtu.be/1DPNHHEn778?t=5077)**
+
+---
+
+<div align = "middle" id = "Footer">
+  <h4><strong><i>
+    This project was made with love 💖 by LA PANDILLA MANTEQUILLA.
+  </h4></strong></i>
+  <img src="Media/Pandilla.jpeg" width="1000" alt="Family"/>
+</div>
