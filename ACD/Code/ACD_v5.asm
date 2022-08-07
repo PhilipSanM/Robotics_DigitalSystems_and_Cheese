@@ -1,4 +1,4 @@
- INSTITUTO POLITECNICO NACIONAL.
+; INSTITUTO POLITECNICO NACIONAL.
 ; CECYT 9 JUAN DE DIOS BATIZ.
 ;
 ; PROYECTO AULA. 
@@ -7,19 +7,19 @@
 ; GRUPO: 6IM3.
 ;
 ; INTEGRANTES:
-; ALVARADO RODRÕGUEZ FERNANDO BRYAN
+; ALVARADO RODR√çGUEZ FERNANDO BRYAN
 ; AYALA BERNAL ISRAEL
 ; BARRERA CASTILLO ERICK ABRAHAM
-; HERN¡NDEZ CABALLERO MAURICIO
-; S¡NCHEZ MARTÕNEZ FELIPE
+; HERN√ÅNDEZ CABALLERO MAURICIO
+; S√ÅNCHEZ MART√çNEZ FELIPE
 ; VILLEGAS MONROY EMILIO
 ;
 ; FECHA DE ENTREGA DEL REPORTE:
 ;
-; EL PROGRAMA SER¡ EL MEN⁄ DE NUESTRO PASTILLERO, EL
-; CUAL CON UN DISPOSITIVO DE SALIDA (LCD 20x4) SE PODR¡
-; VER EL MEN⁄, Y CON UN DISPOSITIVO DE ENTRADA (TECLADO
-; MATRICIAL 4x4) EL USUARIO PODR¡ INTERACTUAR CON
+; EL PROGRAMA SER√Å EL MEN√ö DE NUESTRO PASTILLERO, EL
+; CUAL CON UN DISPOSITIVO DE SALIDA (LCD 20x4) SE PODR√Å
+; VER EL MEN√ö, Y CON UN DISPOSITIVO DE ENTRADA (TECLADO
+; MATRICIAL 4x4) EL USUARIO PODR√Å INTERACTUAR CON
 ; NUESTRO SISTEMA.
 ;-------------------------------------------------------------------------------------------------
 ;
@@ -30,8 +30,8 @@ __CONFIG _CP_OFF & _WDT_OFF & _BODEN_OFF & _PWRTE_ON & _XT_OSC & _WRT_OFF & _LVP
 ;--------------------------------------------------------------------------------------------------
 ;
 ; Fosc = 4 MHz.
-; Ciclo de trabajo del PIC = (1/fosc)*4 = 1 µs.
-; T int =(256-tmr0)*(P)*((1/4000000)*4) = 1 ms. // Tiempo de interrupciÛn.
+; Ciclo de trabajo del PIC = (1/fosc)*4 = 1 ¬µs.
+; T int =(256-tmr0)*(P)*((1/4000000)*4) = 1 ms. // Tiempo de interrupci√≥n.
 ; tmr0=131, P=8.
 ; frec int = 1/ t int = 1 KHz.
 ;----------------------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ cta_unimin 		equ 	0x30; Variable utilizada para contabilizar las unidades de min
 cta_decmin 		equ 	0x31; Variable utilizada para contabilizar las decenas de minuto en binario.
 cta_unihor 		equ 	0x32; Variable utilizada para contabilizar las unidades de hora en binario.
 cta_dechor 		equ 	0x33; Variable utilizada para contabilizar las decenas de hora en binario.
-temporal 		equ 	0x34; Registro utilizado para llevar los valores de la cuenta a la tabla de conversiÛn a ascii.
+temporal 		equ 	0x34; Registro utilizado para llevar los valores de la cuenta a la tabla de conversi√≥n a ascii.
 buffer8 		equ 	0x35; Registro utilizado para mostrar el valor de cta_dechor en la lcd.
 buffer7 		equ 	0x36; Registro utilizado para mostrar el valor de cta_unihor en la lcd.
 buffer5 		equ 	0x38; Registro utilizado para mostrar el valor de cta_decmin en la lcd.
@@ -60,62 +60,62 @@ buffer4 		equ 	0x39; Registro utilizado para mostrar el valor de cta_unimin en l
 buffer2 		equ 	0x41; Registro utilizado para mostrar el valor de cta_decseg en la lcd.
 buffer1 		equ 	0x42; Registro utilizado para mostrar el valor de cta_uniseg en la lcd.
 Var_teclado 	equ 	0x43; Variable utilizada para almacenar la tecla oprimida en el puerto b.
-resp_uniseg 	equ 	0x44; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
-resp_decseg 	equ 	0x45; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
-resp_unimin 	equ 	0x46; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
-resp_decmin 	equ 	0x47; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
-resp_unihor 	equ 	0x48; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
-resp_dechor 	equ 	0x49; Variables para guardar el valor de las unidades de minuto que estableciÛ el usuario.
+resp_uniseg 	equ 	0x44; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
+resp_decseg 	equ 	0x45; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
+resp_unimin 	equ 	0x46; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
+resp_decmin 	equ 	0x47; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
+resp_unihor 	equ 	0x48; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
+resp_dechor 	equ 	0x49; Variables para guardar el valor de las unidades de minuto que estableci√≥ el usuario.
 cont_segundos 	equ 	0x59; Variable que cuenta segundos.
 ;---------------------------------------------------------------------------------------------------
 ;Constantes
-No_haytecla equ 0xF0; CÛdigo que pertenece al no haber oprimido ninguna tecla.
-Tec_7 		equ 	0xE0; CÛdigo de la tecla 1.
-Tec_8 		equ 	0xD0; CÛdigo de la tecla 2.
-Tec_9 		equ 	0xB0; CÛdigo de la tecla 3.
-Tec_A 		equ 	0x70; CÛdigo de la tecla A.
-Tec_4 		equ 	0xE0; CÛdigo de la tecla 4.
-Tec_5 		equ 	0xD0; CÛdigo de la tecla 5.
-Tec_6 		equ 	0xB0; CÛdigo de la tecla 6.
-Tec_1 		equ 	0xE0; CÛdigo de la tecla 7.
-Tec_2 		equ 	0xD0; CÛdigo de la tecla 8.
-Tec_3 		equ 	0xB0; CÛdigo de la tecla 9.
-Tec_0 		equ 	0xD0; CÛdigo de la tecla 0.
-Tec_ON 		equ 	0xE0; CÛdigo de la tecla ON.
-Tec_igual 	equ 	0xB0; CÛdigo de la tecla =.
+No_haytecla equ 0xF0; C√≥digo que pertenece al no haber oprimido ninguna tecla.
+Tec_7 		equ 	0xE0; C√≥digo de la tecla 1.
+Tec_8 		equ 	0xD0; C√≥digo de la tecla 2.
+Tec_9 		equ 	0xB0; C√≥digo de la tecla 3.
+Tec_A 		equ 	0x70; C√≥digo de la tecla A.
+Tec_4 		equ 	0xE0; C√≥digo de la tecla 4.
+Tec_5 		equ 	0xD0; C√≥digo de la tecla 5.
+Tec_6 		equ 	0xB0; C√≥digo de la tecla 6.
+Tec_1 		equ 	0xE0; C√≥digo de la tecla 7.
+Tec_2 		equ 	0xD0; C√≥digo de la tecla 8.
+Tec_3 		equ 	0xB0; C√≥digo de la tecla 9.
+Tec_0 		equ 	0xD0; C√≥digo de la tecla 0.
+Tec_ON 		equ 	0xE0; C√≥digo de la tecla ON.
+Tec_igual 	equ 	0xB0; C√≥digo de la tecla =.
 ; banderas del registro banderas.
-ban_int 	equ 	.0; Bit0 de la bandera de interrupciÛn.
-sin_bd1 	equ 	.1; Bit1 de la bandera de interrupciÛn. 
-sin_bd2 	equ 	.2; Bit2 de la bandera de interrupciÛn.
-sin_bd3 	equ 	.3; Bit3 de la bandera de interrupciÛn.
-sin_bd4 	equ 	.4; Bit4 de la bandera de interrupciÛn.
-sin_bd5 	equ 	.5; Bit5 de la bandera de interrupciÛn.
-sin_bd6 	equ 	.6; Bit6 de la bandera de interrupciÛn.
-sin_bd7 	equ 	.7; Bit7 de la bandera de interrupciÛn.
+ban_int 	equ 	.0; Bit0 de la bandera de interrupci√≥n.
+sin_bd1 	equ 	.1; Bit1 de la bandera de interrupci√≥n. 
+sin_bd2 	equ 	.2; Bit2 de la bandera de interrupci√≥n.
+sin_bd3 	equ 	.3; Bit3 de la bandera de interrupci√≥n.
+sin_bd4 	equ 	.4; Bit4 de la bandera de interrupci√≥n.
+sin_bd5 	equ 	.5; Bit5 de la bandera de interrupci√≥n.
+sin_bd6 	equ 	.6; Bit6 de la bandera de interrupci√≥n.
+sin_bd7 	equ 	.7; Bit7 de la bandera de interrupci√≥n.
 ;--------------------------------------------------------------------------------------------------
 ; Def. de Ptos. I/0.
 ;
 ; Puerto A.
-RS_LCD		equ 	.0; Bit que controla el modo de operaciÛn de la lcd.
+RS_LCD		equ 	.0; Bit que controla el modo de operaci√≥n de la lcd.
 Enable_LCD 	equ 	.1; Bit que controla el Enable de la lcd.
 Sin_UsoRA2 	equ 	.2; Bit2 sin uso del puerto a.
 Sin_UsoRA3 	equ 	.3; Bit3 sin uso del puerto a.
 Sin_UsoRA4 	equ 	.4; Bit4 sin uso del puerto a.
 Sin_UsoRA5 	equ 	.5; Bit5 sin uso del puerto a.
 ;
-proga equ B'111100'; DefiniciÛn de la configuraciÛn de los bits del puerto A.
+proga equ B'111100'; Definici√≥n de la configuraci√≥n de los bits del puerto A.
 ;
 ;Puerto B.
-Act_Ren00 	equ 	.0; Bit para la activaciÛn del renglÛn 0.
-Act_Ren11 	equ 	.1; Bit para la activaciÛn del renglÛn 1.
-Act_Ren22 	equ 	.2; Bit para la activaciÛn del renglÛn 2.
-Act_Ren33 	equ 	.3; Bit para la activaciÛn del renglÛn 3.
+Act_Ren00 	equ 	.0; Bit para la activaci√≥n del rengl√≥n 0.
+Act_Ren11 	equ 	.1; Bit para la activaci√≥n del rengl√≥n 1.
+Act_Ren22 	equ 	.2; Bit para la activaci√≥n del rengl√≥n 2.
+Act_Ren33 	equ 	.3; Bit para la activaci√≥n del rengl√≥n 3.
 Col_1 		equ 	.4; Bit de entrada para leer el c{odigo de la tecla oprimida de la columna 1.
 Col_2 		equ 	.5; Bit de entrada para leer el c{odigo de la tecla oprimida de la columna 2.
 Col_3 		equ 	.6; Bit de entrada para leer el c{odigo de la tecla oprimida de la columna 3.
 Col_4 		equ 	.7; Bit de entrada para leer el c{odigo de la tecla oprimida de la columna 4.
 ;
-progb equ b'11110000'; ProgramaciÛn inicial del puerto B.
+progb equ b'11110000'; Programaci√≥n inicial del puerto B.
 ;
 ;Puerto C.
 D0_LCD 		equ 	.0; Bit 0 de datos o comandos para la LCD.
@@ -127,7 +127,7 @@ D5_LCD 		equ 	.5; Bit 5 de datos o comandos para la LCD.
 D6_LCD 		equ	 	.6; Bit 6 de datos o comandos para la LCD.
 D7_LCD 		equ 	.7; Bit 7 de datos o comandos para la LCD.
 ;
-progc equ b'00000000'; ProgramaciÛn inicial del puerto C como Entrada.
+progc equ b'00000000'; Programaci√≥n inicial del puerto C como Entrada.
 ;
 ;Puerto D.
 Activador 	equ .0; Bit que activa el dispensamiento.
@@ -139,26 +139,26 @@ Sin_UsoRD5 	equ .5; Bit5 sin uso del puerto D.
 Sin_UsoRD6 	equ .6; Bit6 sin uso del puerto D.
 Sin_UsoRD7 	equ .7; Bit7 sin uso del puerto D.
 ;
-progd equ b'11111110';DefiniciÛn de la configuraciÛn del puerto D.
+progd equ b'11111110';Definici√≥n de la configuraci√≥n del puerto D.
 ;
 ; Puerto E.
 Sin_UsoRE0 equ .0; Bit0 sin uso del puerto E.
 Sin_UsoRE1 equ .1; Bit1 sin uso del puerto E.
 Sin_UsoRE2 equ .2; Bit2 sin uso del puerto E.
 ;
-proge equ b'111'; DefiniciÛn de la configuraciÛn de los bits del puerto E.
+proge equ b'111'; Definici√≥n de la configuraci√≥n de los bits del puerto E.
 ;--------------------------------------------------------------------------------------------------
  ;=================
  ;== Vector Reset =
  ;=================
-				org 0000h; Ve a la p·gina 0 de memoria.
-vec_reset 		clrf pclath; Asegura la p·gina 0 de memoria.
+				org 0000h; Ve a la p√°gina 0 de memoria.
+vec_reset 		clrf pclath; Asegura la p√°gina 0 de memoria.
 				goto prog_prin; Ve a prog_prin.
 ;-------------------------------------------------------------------------------------------------
  ;============================
- ;== Vector de interrupciÛn ==
+ ;== Vector de interrupci√≥n ==
  ;============================
-				org 0x0004; Ve a la direcciÛn de memoria donde se encuentra el vector de interrupciÛn.
+				org 0x0004; Ve a la direcci√≥n de memoria donde se encuentra el vector de interrupci√≥n.
 vec_int 		movwf resp_w; Respalda el estado del registro w.
 				movf status,w; Respalda el estado del registro
 				movwf resp_status; de las banderas de la ALU.
@@ -168,7 +168,7 @@ vec_int 		movwf resp_w; Respalda el estado del registro w.
 				clrf pclath; Borra el registro pclath.
 				movf fsr,w; Respalda el estado
 				movwf res_fsr; del registro fsr.
-				btfsc intcon,t0if; Prueba el bit t0if, del registro intcon, brinca si est· en 0.
+				btfsc intcon,t0if; Prueba el bit t0if, del registro intcon, brinca si est√° en 0.
 				call rutina_int; Llama a la rutina de interrupciones.
 sal_int 		movlw .131; Mueve el valor 131 en binario al registro w.
 				movwf tmr0; Carga el registro tmr0 con w.
@@ -179,7 +179,7 @@ sal_int 		movlw .131; Mueve el valor 131 en binario al registro w.
 				movf resp_status,w; Respalda el contenido
 				movwf status; del registro status.
 				movf resp_w,w; Restaura el contenido del registro w.
-				retfie; Regresa de la subrutina de interrupciÛn.
+				retfie; Regresa de la subrutina de interrupci√≥n.
 ;--------------------------------------------------------------------------------------------------
  ;==================================
  ;== Subrutina de Interrupciones ==
@@ -211,13 +211,13 @@ prog_ini 		bsf status,RP0; Ponte en el banco 1 de ram.
 				movlw 0x02; Mueve el valor 82 en hexadecimal al registro w.
 				movwf option_reg ^0x80; Desabilita pullups y selecciona un prescalador de 8 al TMR0.
 				movlw proga;Configura los bits del puerto A RS_LCD y Enable_LCD
-				movwf trisa ^0x80; como salidas, y los dem·s como entradas.
+				movwf trisa ^0x80; como salidas, y los dem√°s como entradas.
 				movlw progb; Configura los bits del nibble alto del puerto B
 				movwf trisb ^0x80; como salidas, y los del nibble bajo como entradas.
 				movlw progc; Configura los bits del puerto C
 				movwf trisc ^0x80; como salidas.
 				movlw progd; Configura el bit Activador del puerto D
-				movwf trisd ^0x80; como salida y los dem·s como entradas.
+				movwf trisd ^0x80; como salida y los dem√°s como entradas.
 				movlw proge; Configura los bits del puerto E
 				movwf trise ^0x80; como salida.
 				movlw 0x06; Configura los bits del puerto A y E
@@ -225,7 +225,7 @@ prog_ini 		bsf status,RP0; Ponte en el banco 1 de ram.
 				bcf status,RP0; Ponte en el banco 0 de ram. 
 				movlw 0xa0; Habilita el sobreflujo del TMR0
 				movwf intcon; y las interrupciones globales.
-				movlw .131; Activa la interrupciÛn
+				movlw .131; Activa la interrupci√≥n
 				movwf tmr0; cada milisegundo.
 				clrf banderas; Borra el contenido del registro banderas.
 				clrf portc; Limpia el bus de datos.
@@ -274,62 +274,62 @@ sal_subconvascii return; Sal de la subrutina.
  ;== Programa principal =
  ;=======================
 prog_prin 		call prog_ini; Llama a la subrutina de Inicio.
-				call ini_lcd; Llama a la subrutina de inicializaciÛn de la lcd.
+				call ini_lcd; Llama a la subrutina de inicializaci√≥n de la lcd.
 inicio 			bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x81; Pon al cursor de la
 				movwf portc; lcd en el digito 2.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw 'C'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter C en ASCII.
+				movwf portc; c√≥digo del caracter C en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'A'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter A en ASCII.
+				movwf portc; c√≥digo del caracter A en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'P'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter P en ASCII.
+				movwf portc; c√≥digo del caracter P en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'S'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter S en ASCII.
+				movwf portc; c√≥digo del caracter S en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'U'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter U en ASCII.
+				movwf portc; c√≥digo del caracter U en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'L'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter L en ASCII.
+				movwf portc; c√≥digo del caracter L en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'E'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter E en ASCII.
+				movwf portc; c√≥digo del caracter E en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'A'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter A en ASCII.
+				movwf portc; c√≥digo del caracter A en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'U'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter U en ASCII.
+				movwf portc; c√≥digo del caracter U en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'T'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter T en ASCII.
+				movwf portc; c√≥digo del caracter T en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'O'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter O en ASCII.
+				movwf portc; c√≥digo del caracter O en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'M'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter M en ASCII.
+				movwf portc; c√≥digo del caracter M en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'A'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter A en ASCII.
+				movwf portc; c√≥digo del caracter A en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'T'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter T en ASCII.
+				movwf portc; c√≥digo del caracter T en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'I'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter I en ASCII.
+				movwf portc; c√≥digo del caracter I en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'C'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter C en ASCII.
+				movwf portc; c√≥digo del caracter C en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xC5; Pon al cursor de la
@@ -337,31 +337,31 @@ inicio 			bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw 'D'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter D en ASCII.
+				movwf portc; c√≥digo del caracter D en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'I'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter I en ASCII.
+				movwf portc; c√≥digo del caracter I en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'S'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter S en ASCII.
+				movwf portc; c√≥digo del caracter S en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'P'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter P en ASCII.
+				movwf portc; c√≥digo del caracter P en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'E'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter E en ASCII.
+				movwf portc; c√≥digo del caracter E en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'N'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter N en ASCII.
+				movwf portc; c√≥digo del caracter N en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'S'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter S en ASCII.
+				movwf portc; c√≥digo del caracter S en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'E'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter E en ASCII.
+				movwf portc; c√≥digo del caracter E en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'R'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter R en ASCII.
+				movwf portc; c√≥digo del caracter R en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x95; Pon al cursor de la
@@ -369,58 +369,58 @@ inicio 			bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw 'P'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter P en ASCII.
+				movwf portc; c√≥digo del caracter P en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'r'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter r en ASCII.
+				movwf portc; c√≥digo del caracter r en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 's'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter s en ASCII.
+				movwf portc; c√≥digo del caracter s en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII.
+				movwf portc; c√≥digo del caracter i en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'n'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter n en ASCII.
+				movwf portc; c√≥digo del caracter n en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'O'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter O en ASCII.
+				movwf portc; c√≥digo del caracter O en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'N'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter N en ASCII.
+				movwf portc; c√≥digo del caracter N en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'C'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter C en ASCII.
+				movwf portc; c√≥digo del caracter C en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'p'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter p en ASCII.
+				movwf portc; c√≥digo del caracter p en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'a'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter a en ASCII.
+				movwf portc; c√≥digo del caracter a en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'r'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter r en ASCII.
+				movwf portc; c√≥digo del caracter r en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'a'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter a en ASCII.
+				movwf portc; c√≥digo del caracter a en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xD4; Pon al cursor de la
@@ -428,78 +428,78 @@ inicio 			bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII.
+				movwf portc; c√≥digo del caracter i en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'n'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter n en ASCII.
+				movwf portc; c√≥digo del caracter n en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 't'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter t en ASCII.
+				movwf portc; c√≥digo del caracter t en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'r'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter r en ASCII.
+				movwf portc; c√≥digo del caracter r en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'd'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter d en ASCII.
+				movwf portc; c√≥digo del caracter d en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'u'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter u en ASCII.
+				movwf portc; c√≥digo del caracter u en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'c'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter c en ASCII.
+				movwf portc; c√≥digo del caracter c en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII.
+				movwf portc; c√≥digo del caracter i en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'r'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter r en ASCII.
+				movwf portc; c√≥digo del caracter r en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'u'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter u en ASCII.
+				movwf portc; c√≥digo del caracter u en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'n'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter n en ASCII.
+				movwf portc; c√≥digo del caracter n en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 't'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter t en ASCII.
+				movwf portc; c√≥digo del caracter t en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII.
+				movwf portc; c√≥digo del caracter i en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'm'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter m en ASCII.
+				movwf portc; c√≥digo del caracter m en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'p'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter p en ASCII.
+				movwf portc; c√≥digo del caracter p en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
-barre_teclado1 	bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+barre_teclado1 	bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0XF0; avergiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw Tec_ON; Brinca si
 				subwf Var_teclado,w; la tecla ON
 				btfss status,Z; fue oprimida.
@@ -536,15 +536,15 @@ cuenta_time 	movf cta_uniseg,w; Mueve el contenido del registro
 				movf temporal,w; Mueve el contenido del registro
 				movwf buffer8; temporal al registro buffer8.
 				call muestra_time; Llama a la subrutina que muestra el tiempo en la lcd.
-barre_teclado2 	bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+barre_teclado2 	bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0XF0; averiguar si una tecla
@@ -634,19 +634,19 @@ barre_teclado2 	bsf portb,Act_Ren00; Desactiva el renglÛn 0.
 ;======================================
 ;== Subrutina que barre el teclado ==
 ;======================================
-barre_teclado 	bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+barre_teclado 	bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0XF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida
+				andwf Var_teclado,f; fu√© oprimida
 				movlw Tec_ON; Brinca si
 				subwf Var_teclado,w; la tecla ON
 				btfsc status,Z; no fue oprimida.
@@ -665,40 +665,40 @@ nuevo_time 		bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo datos.
 				movlw 'T'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter T en ASCII.
+				movwf portc; c√≥digo del caracter T en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII.
+				movwf portc; c√≥digo del caracter i en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'm'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter m en ASCII.
+				movwf portc; c√≥digo del caracter m en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'p'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter p en ASCII.
+				movwf portc; c√≥digo del caracter p en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'N'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter N en ASCII.
+				movwf portc; c√≥digo del caracter N en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'u'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter u en ASCII.
+				movwf portc; c√≥digo del caracter u en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'v'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter v en ASCII.
+				movwf portc; c√≥digo del caracter v en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la
@@ -706,60 +706,60 @@ nuevo_time 		bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ':'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter : en ASCII.
+				movwf portc; c√≥digo del caracter : en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ':'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter : en ASCII.
+				movwf portc; c√≥digo del caracter : en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw '/'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter / en ASCII.
+				movwf portc; c√≥digo del caracter / en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
-dechor 			bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+dechor 			bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimda
-				btfsc status,Z; del renglÛn 3.
+				btfsc status,Z; del rengl√≥n 3.
 				goto dechor_1; Ve a dechor_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la tecla 0
 				btfsc status,Z; no fue oprimda.
 				goto dec_hor_0; Ve a dec_hor_0.
-dechor_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+dechor_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto dechor_2; Ve a dechor_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1
@@ -767,67 +767,67 @@ dechor_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
 				goto dec_hor_1; Ve a dec_hor_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_2; Ve a dec_hor_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_3; Ve a dec_hor_3.
-dechor_2 		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+dechor_2 		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; no fuÈ oprimida.
+				andwf Var_teclado,f; no fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 1.
+				btfsc status,Z; del rengl√≥n 1.
 				goto dechor_3; Ve a dechor_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimda.
+				btfsc status,Z; no fu√© oprimda.
 				goto dec_hor_4; Ve a dec_hor_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_5; Ve a dec_hor_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_6; Ve a dec_hor_6.
-dechor_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+dechor_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 0.
+				btfsc status,Z; del rengl√≥n 0.
 				goto dechor; Ve a dechor.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_7; Ve a dec_hor_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecla 8
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_8; Ve a dec_hor_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_hor_9; Ve a dec_hor_9.
 				goto dechor; Ve a dechor;
 dec_hor_0 		movlw .0; Carga 0 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -835,10 +835,10 @@ dec_hor_1 		movlw .1; Carga 1 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -846,10 +846,10 @@ dec_hor_2 		movlw .2; Carga 2 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -857,10 +857,10 @@ dec_hor_3 		movlw .3; Carga 3 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -868,10 +868,10 @@ dec_hor_4 		movlw .4; Carga 4 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -879,10 +879,10 @@ dec_hor_5 		movlw .5; Carga 5 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '5'; Manda el cÛdigo del caracter 5
+				movlw '5'; Manda el c√≥digo del caracter 5
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -890,10 +890,10 @@ dec_hor_6 		movlw .6; Carga 6 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -901,10 +901,10 @@ dec_hor_7 		movlw .7; Carga 7 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -912,10 +912,10 @@ dec_hor_8 		movlw .8; Carga 8 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
@@ -923,114 +923,114 @@ dec_hor_9 		movlw .9; Carga 9 al
 				movwf cta_dechor; registro cta_dechor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9A; Pon al cursor de la lcd
-				movwf portc; en el digito 7 del 3er renglÛn.
+				movwf portc; en el digito 7 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unihor; Ve a unihor.
-unihor 			call esp_int; Llama a la subrutina que espera la interrupciÛn.
-				call esp_int; Llama a la subrutina que espera la interrupciÛn.
-unihor_0 		bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+unihor 			call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+				call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+unihor_0 		bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 3.
+				btfsc status,Z; del rengl√≥n 3.
 				goto unihor_1; Ve a unihor_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la tecla 0
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_0; Ve a uni_hor_0.
-unihor_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+unihor_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto unihor_2; Ve a dechor_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1.
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_1; Ve a uni_hor_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2.
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_2; Ve a uni_hor_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3.
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_3; Ve a uni_hor_3.
-unihor_2 		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+unihor_2 		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; en el renglÛn 1.
+				btfsc status,Z; en el rengl√≥n 1.
 				goto unihor_3; Ve a unihor_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_4; Ve a uni_hor_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_5; Ve a uni_hor_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_6; Ve a uni_hor_6.
-unihor_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+unihor_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; en el renglÛn 0.
+				btfsc status,Z; en el rengl√≥n 0.
 				goto unihor_0; Ve a unihor_0.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_7; Ve a uni_hor_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_8; Ve a uni_hor_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_hor_9; Ve a uni_hor_9.
 				goto unihor_0; Ve a unihor_0.
 uni_hor_0 		movlw .0; Carga 0 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1038,10 +1038,10 @@ uni_hor_1 		movlw .1; Carga 1 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1049,10 +1049,10 @@ uni_hor_2	 	movlw .2; Carga 2 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1060,10 +1060,10 @@ uni_hor_3 		movlw .3; Carga 3 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1071,10 +1071,10 @@ uni_hor_4 		movlw .4; Carga 4 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1082,7 +1082,7 @@ uni_hor_5 		movlw .5; Carga 5 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw '5'; Mueve el valor de 0 en ascii al registro w.
@@ -1093,10 +1093,10 @@ uni_hor_6 		movlw .6; Carga 6 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1104,10 +1104,10 @@ uni_hor_7 		movlw .7; Carga 7 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1115,10 +1115,10 @@ uni_hor_8 		movlw .8; Carga 8 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
@@ -1126,114 +1126,114 @@ uni_hor_9 		movlw .9; Carga 9 al
 				movwf cta_unihor; registro cta_unihor.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9B; Pon al cursor de la lcd
-				movwf portc; en el digito 8 del 3er renglÛn.
+				movwf portc; en el digito 8 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decmin; Ve a decmin.
-decmin 			call esp_int; Llama a la subrutina que espera la interrupciÛn.
-				call esp_int; Llama a la subrutina que espera la interrupciÛn.
-decmin_0 		bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+decmin 			call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+				call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+decmin_0 		bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida
+				andwf Var_teclado,f; fu√© oprimida
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 3.
+				btfsc status,Z; del rengl√≥n 3.
 				goto decmin_1; Ve a decmin_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la tecla 0
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_0; Ve a dec_min_0.
-decmin_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+decmin_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto decmin_2; Ve a decmin_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_1; Ve a dec_min_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_2; Ve a dec_min_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_3; Ve a dec_min_3.
-decmin_2 		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+decmin_2 		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 1.
+				btfsc status,Z; del rengl√≥n 1.
 				goto decmin_3; Ve a decmin_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_4; Ve a dec_min_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_5; Ve a dec_min_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_6; Ve a dec_min_6.
-decmin_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+decmin_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 0.
+				btfsc status,Z; del rengl√≥n 0.
 				goto decmin_0; Ve a decmin_0.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_7; Ve a dec_min_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecla 8
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_8; Ve a dec_min_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_min_9; Ve a dec_min_9.
 				goto decmin_0; Ve a decmin_0.
 dec_min_0		movlw .0; Carga 0 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Mueve el valor 9D en hexadecimal al registro w.
-				movwf portc; Pon al cursor de la lcd en el digito 10 del 3er renglÛn.
+				movwf portc; Pon al cursor de la lcd en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1241,10 +1241,10 @@ dec_min_1 		movlw .1; Carga 1 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1252,10 +1252,10 @@ dec_min_2 		movlw .2; Carga 2 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1263,10 +1263,10 @@ dec_min_3 		movlw .3; Carga 3 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1274,10 +1274,10 @@ dec_min_4 		movlw .4; Carga 4 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1285,10 +1285,10 @@ dec_min_5 		movlw .5; Carga 5 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '5'; Manda el cÛdigo del caracter 5
+				movlw '5'; Manda el c√≥digo del caracter 5
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1296,10 +1296,10 @@ dec_min_6 		movlw .6; Carga 6 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1307,10 +1307,10 @@ dec_min_7 		movlw .7; Carga 7 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1318,10 +1318,10 @@ dec_min_8 		movlw .8; Carga 8 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
@@ -1329,114 +1329,114 @@ dec_min_9 		movlw .9; Carga 9 al
 				movwf cta_decmin; registro cta_decmin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9D; Pon al cursor de la lcd
-				movwf portc; en el digito 10 del 3er renglÛn.
+				movwf portc; en el digito 10 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto unimin; Ve a unimin.
-unimin 			call esp_int; Llama a la subrutina que espera a la interrupciÛn.
-				call esp_int; Llama a la subrutina que espera a la interrupciÛn.
-unimin_0		bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+unimin 			call esp_int; Llama a la subrutina que espera a la interrupci√≥n.
+				call esp_int; Llama a la subrutina que espera a la interrupci√≥n.
+unimin_0		bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 3.
+				btfsc status,Z; del rengl√≥n 3.
 				goto unimin_1; Ve a unimin_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la tecla 0
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_0; Ve a uni_min_0.
-unimin_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+unimin_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto unimin_2; Ve a unimin_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_1; Ve a uni_min_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_2; Ve a uni_min_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3.
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_3; Ve a uni_min_3.
-unimin_2 		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+unimin_2 		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 1.
+				btfsc status,Z; del rengl√≥n 1.
 				goto unimin_3; Ve a unimin_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_4; Ve a uni_min_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_5; Ve a uni_min_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_6; Ve a uni_min_6.
-unimin_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+unimin_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 0.
+				btfsc status,Z; del rengl√≥n 0.
 				goto unimin_0; Ve a unimin.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_7; Ve a uni_min_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecla 8
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_8; Ve a uni_min_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_min_9; Ve a uni_min_9.
 				goto unimin_0;
 uni_min_0 		movlw .0; Carga 0 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1444,10 +1444,10 @@ uni_min_1		movlw .1; Carga 1 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1455,10 +1455,10 @@ uni_min_2 		movlw .2; Carga 2 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1466,10 +1466,10 @@ uni_min_3 		movlw .3; Carga 3 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1477,10 +1477,10 @@ uni_min_4 		movlw .4; Carga 4 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1488,10 +1488,10 @@ uni_min_5 		movlw .5; Carga 5 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '5'; Manda el cÛdigo del caracter 5
+				movlw '5'; Manda el c√≥digo del caracter 5
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1499,10 +1499,10 @@ uni_min_6 		movlw .6; Carga 6 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1510,10 +1510,10 @@ uni_min_7 		movlw .7; Carga 7 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1521,10 +1521,10 @@ uni_min_8 		movlw .8; Carga 8 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
@@ -1532,114 +1532,114 @@ uni_min_9 		movlw .9; Carga 9 al
 				movwf cta_unimin; registro cta_unimin.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x9E; Pon al cursor de la lcd
-				movwf portc; en el digito 11 del 3er renglÛn.
+				movwf portc; en el digito 11 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto decseg; Ve a decseg.
-decseg 			call esp_int; Llama a la subrutina que espera la interrupciÛn.
-				call esp_int; Llama a la subrutina que espera la interrupciÛn.
-decseg_0 		bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+decseg 			call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+				call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+decseg_0 		bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renlgÛn 3.
+				btfsc status,Z; del renlg√≥n 3.
 				goto decseg_1; Ve a decseg_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la telca 0
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_0; Ve a dec_seg_0.
-decseg_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+decseg_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto decseg_2; Ve a decseg_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_1; Ve a dec_seg_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_2; Ve a dec_seg_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_3; Ve a dec_seg_3.
-decseg_2		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+decseg_2		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 1.
+				btfsc status,Z; del rengl√≥n 1.
 				goto decseg_3; Ve a decseg_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_4; Ve a dec_seg_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_5; Ve a dec_seg_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_6; Ve a dec_seg_6.
-decseg_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+decseg_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 0.
+				btfsc status,Z; del rengl√≥n 0.
 				goto decseg_0; Ve a decseg.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_7; Ve a dec_seg_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecl 8
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_8; Ve a dec_seg_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto dec_seg_9; Ve a dec_seg_9.
 				goto decseg_0; Ve a decseg_0.
 dec_seg_0 		movlw .0; Carga 0 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1647,10 +1647,10 @@ dec_seg_1 		movlw .1; Carga 1 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1658,10 +1658,10 @@ dec_seg_2 		movlw .2; Carga 2 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1669,10 +1669,10 @@ dec_seg_3 		movlw .3; Carga 3 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1680,10 +1680,10 @@ dec_seg_4 		movlw .4; Carga 4 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1691,10 +1691,10 @@ dec_seg_5	 	movlw .5; Carga 5 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '5'; Manda el cÛdigo del caracter 5
+				movlw '5'; Manda el c√≥digo del caracter 5
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1702,10 +1702,10 @@ dec_seg_6 		movlw .6; Carga 6 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1713,10 +1713,10 @@ dec_seg_7 		movlw .7; Carga 7 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1724,10 +1724,10 @@ dec_seg_8 		movlw .8; Carga 8 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
@@ -1735,114 +1735,114 @@ dec_seg_9 		movlw .9; Carga 9 al
 				movwf cta_decseg; registro cta_decseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA0; Pon al cursor de la lcd
-				movwf portc; en el digito 13 del 3er renglÛn.
+				movwf portc; en el digito 13 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto uniseg; Ve a uniseg.
-uniseg 			call esp_int; Llama a la subrutina que espera la interrupciÛn.
-				call esp_int; Llama a la subrutina que espera la interrupciÛn.
-uniseg_0		bsf portb,Act_Ren00; Desactiva el renglÛn 0.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren33; Activa el renglÛn 3.
+uniseg 			call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+				call esp_int; Llama a la subrutina que espera la interrupci√≥n.
+uniseg_0		bsf portb,Act_Ren00; Desactiva el rengl√≥n 0.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren33; Activa el rengl√≥n 3.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 3.
+				btfsc status,Z; del rengl√≥n 3.
 				goto uniseg_1; Ve a uniseg_1.
 				movlw Tec_0; Brinca si
 				subwf Var_teclado,w; la tecla 0
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_0; Ve a uni_seg_0.
-uniseg_1 		bsf portb,Act_Ren33; Desactiva el renglÛn 3.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren22; Activa el renglÛn 2.
+uniseg_1 		bsf portb,Act_Ren33; Desactiva el rengl√≥n 3.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren22; Activa el rengl√≥n 2.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 2.
+				btfsc status,Z; del rengl√≥n 2.
 				goto uniseg_2; Ve a uniseg_2.
 				movlw Tec_1; Brinca si
 				subwf Var_teclado,w; la tecla 1
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_1; Ve a uni_seg_1.
 				movlw Tec_2; Brinca si
 				subwf Var_teclado,w; la tecla 2
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_2; Ve a uni_seg_2.
 				movlw Tec_3; Brinca si
 				subwf Var_teclado,w; la tecla 3
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_3; Ve a uni_seg_3.
-uniseg_2 		bsf portb,Act_Ren22; Desactiva el renglÛn 2.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren11; Activa el renglÛn 1.
+uniseg_2 		bsf portb,Act_Ren22; Desactiva el rengl√≥n 2.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren11; Activa el rengl√≥n 1.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 1.
+				btfsc status,Z; del rengl√≥n 1.
 				goto uniseg_3; Ve a uniseg_3.
 				movlw Tec_4; Brinca si
 				subwf Var_teclado,w; la tecla 4
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_4; Ve a uni_seg_4.
 				movlw Tec_5; Brinca si
 				subwf Var_teclado,w; la tecla 5
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_5; Ve a uni_seg_5.
 				movlw Tec_6; Brinca si
 				subwf Var_teclado,w; la tecla 6
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_6; Ve a uni_seg_6.
-uniseg_3 		bsf portb,Act_Ren11; Desactiva el renglÛn 1.
-				nop; Sin operaciÛn.
-				bcf portb,Act_Ren00; Activa el renglÛn 0.
+uniseg_3 		bsf portb,Act_Ren11; Desactiva el rengl√≥n 1.
+				nop; Sin operaci√≥n.
+				bcf portb,Act_Ren00; Activa el rengl√≥n 0.
 				movf portb,w; Lee el teclado
 				movwf Var_teclado; matricial para
 				movlw 0xF0; averiguar si una tecla
-				andwf Var_teclado,f; fuÈ oprimida.
+				andwf Var_teclado,f; fu√© oprimida.
 				movlw No_haytecla; Brinca si hay
 				subwf Var_teclado,w; alguna tecla oprimida
-				btfsc status,Z; del renglÛn 0.
+				btfsc status,Z; del rengl√≥n 0.
 				goto uniseg_0; Ve a uniseg.
 				movlw Tec_7; Brinca si
 				subwf Var_teclado,w; la tecla 7
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_7; Ve a uni_seg_7.
 				movlw Tec_8; Brinca si
 				subwf Var_teclado,w; la tecla 8
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_8; Ve a uni_seg_8.
 				movlw Tec_9; Brinca si
 				subwf Var_teclado,w; la tecla 9
-				btfsc status,Z; no fuÈ oprimida.
+				btfsc status,Z; no fu√© oprimida.
 				goto uni_seg_9; Ve a uni_seg_9.
 				goto uniseg_0; Ve a unidseg_0.
 uni_seg_0 		movlw .0; Carga 0 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '0'; Manda el cÛdigo del caracter 0
+				movlw '0'; Manda el c√≥digo del caracter 0
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1850,10 +1850,10 @@ uni_seg_1 		movlw .1; Carga 1 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '1'; Manda el cÛdigo del caracter 1
+				movlw '1'; Manda el c√≥digo del caracter 1
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1861,10 +1861,10 @@ uni_seg_2 		movlw .2; Carga 2 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '2'; Manda el cÛdigo del caracter 2
+				movlw '2'; Manda el c√≥digo del caracter 2
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1872,10 +1872,10 @@ uni_seg_3 		movlw .3; Carga 3 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '3'; Manda el cÛdigo del caracter 3
+				movlw '3'; Manda el c√≥digo del caracter 3
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1883,10 +1883,10 @@ uni_seg_4 		movlw .4; Carga 4 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '4'; Manda el cÛdigo del caracter 4
+				movlw '4'; Manda el c√≥digo del caracter 4
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1894,10 +1894,10 @@ uni_seg_5 		movlw .5; Carga 5 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '5'; Manda el cÛdigo del caracter 5
+				movlw '5'; Manda el c√≥digo del caracter 5
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1905,10 +1905,10 @@ uni_seg_6 		movlw .6; Carga 6 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '6'; Manda el cÛdigo del caracter 6
+				movlw '6'; Manda el c√≥digo del caracter 6
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1916,10 +1916,10 @@ uni_seg_7 		movlw .7; Carga 7 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '7'; Manda el cÛdigo del caracter 7
+				movlw '7'; Manda el c√≥digo del caracter 7
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1927,10 +1927,10 @@ uni_seg_8 		movlw .8; Carga 8 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '8'; Manda el cÛdigo del caracter 8
+				movlw '8'; Manda el c√≥digo del caracter 8
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1938,10 +1938,10 @@ uni_seg_9 		movlw .9; Carga 9 al
 				movwf cta_uniseg; registro cta_uniseg.
 				bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0xA1; Pon al cursor de la lcd
-				movwf portc; en el digito 14 del 3er renglÛn.
+				movwf portc; en el digito 14 del 3er rengl√≥n.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
-				movlw '9'; Manda el cÛdigo del caracter 9
+				movlw '9'; Manda el c√≥digo del caracter 9
 				movwf portc; en ASCII al puerto C.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				goto regresa; Ve a regresa.
@@ -1966,49 +1966,49 @@ regresa 		movf cta_uniseg,w; Respalda el contenido
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				movlw 'T'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter T en ASCII
+				movwf portc; c√≥digo del caracter T en ASCII
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'i'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter i en ASCII
+				movwf portc; c√≥digo del caracter i en ASCII
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII
+				movwf portc; c√≥digo del caracter e en ASCII
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'm'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter m en ASCII.
+				movwf portc; c√≥digo del caracter m en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'p'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'e'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter e en ASCII.
+				movwf portc; c√≥digo del caracter e en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'n'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter n en ASCII.
+				movwf portc; c√≥digo del caracter n en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ' '; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter en ASCII.
+				movwf portc; c√≥digo del caracter en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'C'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter C en ASCII.
+				movwf portc; c√≥digo del caracter C en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'u'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter u en ASCII.
+				movwf portc; c√≥digo del caracter u en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'r'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter r en ASCII.
+				movwf portc; c√≥digo del caracter r en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 's'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter s en ASCII.
+				movwf portc; c√≥digo del caracter s en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 'o'; Manda al bus de datos el
-				movwf portc; cÛdigo del caracter o en ASCII.
+				movwf portc; c√≥digo del caracter o en ASCII.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				return; Regresa de la subrutina.
 ;-----------------------------------------------------------------
@@ -2027,7 +2027,7 @@ muestra_time 	bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movwf portc; contenido del registro buffer 7.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ':'; Manda al bus de datos el
-				movwf portc; cÛdigo en ASCII de :.
+				movwf portc; c√≥digo en ASCII de :.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movf buffer5,w; Manda al bus de datos el
 				movwf portc; contenido del registro buffer 5.
@@ -2036,7 +2036,7 @@ muestra_time 	bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movwf portc; contenido del registro buffer 4.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw ':'; Manda al bus de datos el
-				movwf portc; cÛdigo en ASCII de :.
+				movwf portc; c√≥digo en ASCII de :.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movf buffer2,w; Manda al bus de datos el
 				movwf portc; contenido del registro buffer 2.
@@ -2047,23 +2047,23 @@ muestra_time 	bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				return; Regresa de la subrutina.
 ;--------------------------------------------------------------------------------------------------
  ;============================================
- ;== Subrutina de inicializaciÛn de la LCD ==
+ ;== Subrutina de inicializaci√≥n de la LCD ==
  ;============================================
 ini_lcd 		bcf porta,RS_LCD; Pon a la lcd en modo comando.
 				movlw 0x38; Enciende la pantalla
 				movwf portc; y el cursor.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 0x0c; Establece las operaciones de 8 bits, y selecciona un
-				movwf portc; display de 2 lÏneas y fuente de 5 x 7 caracteres de puntos.
+				movwf portc; display de 2 l√¨neas y fuente de 5 x 7 caracteres de puntos.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 0x01; Borra los caracteres que aparecen
-				movwf portc; en la LCD y pon el cursor en el dÌgito 1.
+				movwf portc; en la LCD y pon el cursor en el d√≠gito 1.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
-				movlw 0x06; Establece el modo para incrementar la direcciÛn en uno y para mover
+				movlw 0x06; Establece el modo para incrementar la direcci√≥n en uno y para mover
 				movwf portc; el cursor a la derecha a la hora de escribir en el 00/CG RAM.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				movlw 0x80; Coloca el cursor de la LCD
-				movwf portc; en la posiciÛn del dÌgito 1.
+				movwf portc; en la posici√≥n del d√≠gito 1.
 				call pulso_enable; Llama a la subrutina que ingresa el dato/comando a la lcd.
 				bsf porta,RS_LCD; Pon a la lcd en modo operacion.
 				return; Regresa de la subrutina.
