@@ -9,6 +9,17 @@
 
 ---
 
+## km
+
+<div align = "left" id = "Schematics">
+  <h3><strong>
+    HORN CONTROL:
+  </h3></strong>
+
+</div>
+
+---
+
 ## S C H E M A T I C S
 
 <div align = "left" id = "Schematics">
@@ -44,3 +55,6 @@
 ## YT V I D E O ▶️:
 
 - **[La Pandilla Mantequilla](https://www.youtube.com/watch?v=7wLfim5DCOw)**
+- **[CECyT 9 -ACD](https://www.youtube.com/watch?v=u54tylWNG8o)**
+- **[CECyT 9 EXPOBATIZ](https://www.youtube.com/watch?v=XzQXxdGQ930)**
+- **[ACD Place #1🏆](https://youtu.be/1DPNHHEn778?t=5077)**

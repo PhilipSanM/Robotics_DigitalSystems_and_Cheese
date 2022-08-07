@@ -3,6 +3,8 @@
 Mexico is one of the most insecure countries, in addition to having a large number of missing persons... Have you ever felt in danger? (This is a project that I carried out during my confinement due to the covid-19 pandemic)<br/>
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164563838-89475283-d978-47ea-bd82-54339668a910.jpeg" alt="KANAN1" width="250" height="180"/> </a>
 
+---
+
 ## M A I N P R O B L E M.
 
 This project begins in 2020 where the main problem is to combat insecurity in Mexico City, when in 2019 the highest number of cases of disappearances of women and minors was registered (Around 14 cases of disappearances per day).
@@ -25,7 +27,9 @@ Therefore KANAN, should be a solution that:
   <li>Can connect to a database.</li>
 </ol>
 
-### RESULTS.
+---
+
+## RESULTS.
 
 KANAN works in such a way that it receives at least one cell phone number of your most trusted contact via text messages or in the code through AT commands (These are the commands that the SIM module understands), and when the battery is full, it is already functional
 
@@ -35,6 +39,8 @@ It has a different appearance to go unnoticed as a help button, then when you pr
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164563965-3ad838b8-a07a-4d22-8c65-764ab32cbec0.jpeg" alt="KANAN1" width="180" height="280"/> </a>
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164563991-088ee70a-870b-4e51-9d7e-8eb998011432.PNG" alt="KANAN2" width="180" height="280"/> </a>
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164564021-5c723df3-3deb-43fc-ab5f-d0ca08e494e7.jpeg" alt="KANAN3" width="180" height="280"/> </a>
+
+---
 
 ## M E T H O D O L O G Y / A P P R O A C H
 
@@ -58,6 +64,8 @@ Finally, this theory is only united with separate circuits that provide the corr
 <br/><br/>
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164564259-074006d7-9611-4095-9c53-e3ec8906abf0.jpeg" alt="KANAN4" width="380" height="180"/> </a>
 <a  target="_blank"> <img src="https://user-images.githubusercontent.com/99928036/164564723-b4f05da6-94a3-46b5-8ddf-cef7dbf0f8c4.jpeg" alt="KANAN4" width="380" height="180"/> </a>
+
+---
 
 ## FUN FACT:
 
