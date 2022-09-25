@@ -87,5 +87,27 @@ void loop() {
   }
 ```
 ### Remember to use variables if you need 😀
+```CPP
+//Integer
+byte     0 to 255 
+int      -32,768 to 32,767 
+long    -2,147,483,648  to  2,147,483,647
+
+// flotant
+float     -9999.9999  to 9999.9999
+double    -9999.9999  to 9999.9999
+
+// character
+
+char   'A'    'b'    '/'    '@'   '4'
+char character = 'g';
+String string = "hello world"; 
+
+// bool
+
+bool =  1   0     true   false    HIGH   LOW  
+bool boolA = 0;
+
+```
 ### Arduino on Tinkercad:
 ![Resume](https://user-images.githubusercontent.com/99928036/192148771-1da617d8-c196-4273-bf48-0380f59da390.png)
