@@ -1,5 +1,6 @@
 # Abstract:
-
+---
+## Useful commands:🔥❤️‍🔥
 ## Map:
 
 ```CPP
@@ -39,3 +40,17 @@
   }
 
 ```
+
+## Delay microseconds:
+
+```CPP
+/* 
+  delayMicroseconds(Integer);
+  Just another delay but, for microseconds
+*/
+ delayMicroseconds(10);
+
+```
+
+
+
