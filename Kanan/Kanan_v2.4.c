@@ -1,21 +1,18 @@
 /*      =======================================================================
         =================== K A N A N =========================================
         =======================================================================
->>Name: Felipe Sanchez (PhilipSanM)
->>Carrer: Artificial Inteligence Engineer.
->>date of last modification: 04/21/22
-                   
->>> GitHub:     https://github.com/PhilipSanM/Kanan
->>> Twitter:    https://twitter.com/PhilipSanM_
->>> Instagram:  https://www.instagram.com/PhilipSanM/
->>> Linkedin:   https://www.linkedin.com/in/philipsanm/
-       
+>>date of last modification: 09/07/23
 Mexico is one of the most insecure countries, in addition to having a large number of missing persons... 
 Have you ever felt in danger? 
 (This is a project carried out during my confinement due to the covid-19 pandemic)
-
 :3
-* @copyright Copyright (c) 2022
+
+
+* @copyright Copyright (c) 2023
+Contributos:
+ - PhilipSanM
+ - Maurichio Hernandez
+
 */
 
 
@@ -130,15 +127,3 @@ void main(){
     }
   }while(true);
 }
-//             mm    mm                      
-//    *@@@@* *@@@    @@                      
-//      @@     @@                            
-//      @@     @@  *@@@  *@@@@@@@@m   mm@*@@ 
-//      @@     !@    @@    @@   *@@  m@*   @@
-//      @@     !@    !@    !@    @@  !@******
-// @@!  @@     !@    !@    !@    !@  !@m    m
-//      !!     !!    !!    !@!   !!  !!******
-// !!!  !!     :!    !!    !@   !!!  :!!     
-//  :!: :    : : : : : :   :!: : :    : : :: 
-//                         ::                
-//                       : : ::       
