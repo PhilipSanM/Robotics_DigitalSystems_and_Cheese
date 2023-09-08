@@ -33,6 +33,11 @@
 
 ## 👩‍💻👨‍💻🧑‍💻Main Contributors🧑‍💻👨‍💻👩‍💻:
 
-- <a href="https://github.com/PhilipSanM">PhilipSanM</a>
+- <a href="https://philipsanm.github.io/">PhilipSanM</a>
+- Mauricio
+- Israa
+- Emi
+- Somali
+- Gordolobo
 
 ---
